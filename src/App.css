@@ -1,0 +1,21 @@
+
+
+.header{
+  background-color: black;
+  border:  1px solid black;
+  color: aqua;
+  font-size: larger;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+
+.button{
+  width: 100px;
+  height:50px;
+  font-size: larger;
+  background-color: fuchsia;
+  padding: 3px 5px 3px 5px;
+  cursor: pointer;
+}
