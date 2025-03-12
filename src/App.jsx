@@ -1,17 +1,25 @@
 import React from "react";
-import Users from "./Components/Users";
-import { Route, Routes } from "react-router-dom";
-import HomeLayout from "./layouts/HomeLayout";
-import Counter from "./Components/Counter";
-import Todo from "./Components/todo/Todo";
-import Navbar from "./Components/Header";
-import Movies from "./Components/Movies/Movies";
-
+import { Routes, Route } from "react-router-dom";
+import Users from "./components/Users";
+import Posts from "./components/Posts";
+import Home from "./pages/Home";
+import UserDetails from "./components/UserDetails";
+import Counter from "./components/Counter";
 
 const App = () => {
     return (
         <div>
-            <Users />
+            {/* <Header /> */}
+            <Routes>
+                <Route path="/home" element={<Home />}>
+                    <Route path="/home/users" element={<Users />} />
+                    <Route path="/home/user/:userId" element={<UserDetails />} />
+                    <Route path="/home/posts" element={<Posts />} />
+                    <Route path="/home/counter" element={<Counter />} />
+                </Route>
+                {/* <Route path="/users" element={<Users />} />
+                <Route path="/posts" element={<Posts />} /> */}
+            </Routes>
         </div>
     );
 };

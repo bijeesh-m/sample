@@ -1,24 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
-    const [otherState, setOtherState] = useState(false);
 
-    // useEffect(() => {
-    //     console.log("Use effect is runnning");
-    //     fetch("https://jsonplaceholder.typicode.com/users")
-    //         .then((res) => {
-    //             return res.json();
-    //         })
-    //         .then((data) => {
-    //             console.log(data);
-    //             setUsers(data);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }, [otherState]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -34,16 +21,18 @@ const Users = () => {
 
     return (
         <div>
-            <button className=" border rounded-2xl px-4 py-2" onClick={() => setOtherState(!otherState)}>
-                Change State(update component)
-            </button>
-
-            <div className=" grid grid-cols-4">
+            <h1 className=" text-2xl my-5 px-5 font-bold">Users</h1>
+            <div className=" grid grid-cols-1 p-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 my-5">
                 {users.map((user) => {
                     return (
-                        <div key={user.id} className=" bg-amber-200 p-4 rounded m-2 ">
-                            <p className=" text-xl font-bold">{user.name}</p>
-                            <p className=" text-xl font-bold line-clamp-1">{user.email}</p>
+                        <div
+                            onClick={() => navigate(`/home/user/${user.id}`)}
+                            className=" border bg-amber-50 rounded-2xl p-5 space-y-2"
+                            key={user.id}
+                        >
+                            <h1>{user.name}</h1>
+                            <p className=" line-clamp-2">{user.email}</p>
+                            <p>{user.phone}</p>
                         </div>
                     );
                 })}
